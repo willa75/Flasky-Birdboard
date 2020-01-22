@@ -16,7 +16,7 @@ RUN apt-get update \
   && apt-get purge -y --auto-remove ${BUILD_DEPS} \
   && apt-get clean
 
-ARG FLASK_ENV="production"
+ARG FLASK_ENV="development"
 ENV FLASK_ENV="${FLASK_ENV}" \
     PYTHONUNBUFFERED="true"
 
