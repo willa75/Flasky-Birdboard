@@ -5,7 +5,7 @@ import click
 
 
 @click.command()
-@click.argument('path', default=os.path.join('fakefacts', 'tests'))
+@click.argument('path', default=os.path.join('birdboard', 'tests'))
 def cli(path):
     """
     Run tests with Pytest.

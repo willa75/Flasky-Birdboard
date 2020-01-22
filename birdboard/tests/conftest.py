@@ -1,6 +1,6 @@
 import pytest
 
-from fakefacts.app import create_app
+from birdboard.app import create_app
 
 
 @pytest.yield_fixture(scope='session')

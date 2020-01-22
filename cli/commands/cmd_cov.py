@@ -4,7 +4,7 @@ import click
 
 
 @click.command()
-@click.argument('path', default='fakefacts')
+@click.argument('path', default='birdboard')
 def cli(path):
     """
     Run a test coverage report.
