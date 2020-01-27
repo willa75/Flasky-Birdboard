@@ -1,7 +1,12 @@
 from flask import Flask
 
 from birdboard.blueprints.page import page
-from birdboard.extensions import debug_toolbar
+from birdboard.api.v1.projects import ProjectsView
+from birdboard.extensions import (
+    debug_toolbar,
+    db,
+    marshmallow
+)
 
 
 def create_app(settings_override=None):
@@ -11,15 +16,16 @@ def create_app(settings_override=None):
     :param settings_override: Override settings
     :return: Flask app
     """
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__,  static_folder='../public', static_url_path='')
 
     app.config.from_object('config.settings')
-    app.config.from_pyfile('settings.py', silent=True)
 
     if settings_override:
         app.config.update(settings_override)
 
     app.register_blueprint(page)
+
+    ProjectsView.register(app)
 
     extensions(app)
 
@@ -34,5 +40,7 @@ def extensions(app):
     :return: None
     """
     debug_toolbar.init_app(app)
+    db.init_app(app)
+    marshmallow.init_app(app)
 
     return None
