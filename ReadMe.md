@@ -7,3 +7,8 @@ In order to run the project, download it and run:
 ```
 docker-compose up --build
 ```
+
+There are also commands to help you setup the app db and do other useful things, you can see the list of command files by running:
+```
+docker-compose run web birdboard
+```
